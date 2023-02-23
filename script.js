@@ -1,11 +1,11 @@
 var noon = 12;
 var evening = 18;
 
-var currentTime = function ()
+var showCurrentTime = function()
 {
-    var currentTime = new Date();
-
     var clock = document.getElementById('clock');
+
+    var currentTime = new Date();
 
     var hours = currentTime.getHours();
     var minutes = currentTime.getMinutes();
@@ -19,4 +19,17 @@ var currentTime = function ()
     var clockTime = hours + ':' + minutes + ':' + seconds + ':' + meridian + '!';
 
     clock.innerText = clockTime;
-}
+};
+
+var updateClock = function()
+{
+    var time = new Date().getHours();
+
+    showCurrentTime();
+
+};
+updateClock();
+
+var oneSecond = 1000;
+
+setInterval( updateClock, oneSecond);
