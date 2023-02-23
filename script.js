@@ -7,9 +7,9 @@ var currentTime = function ()
 
     var clock = document.getElementById('clock');
 
-    var hours = clock.getHours();
-    var minutes = clock.getMinutes();
-    var seconds = clock.getSeconds();
+    var hours = currentTime.getHours();
+    var minutes = currentTime.getMinutes();
+    var seconds = currentTime.getSeconds();
     var meridian = "AM";
 
     if (hours > noon){
