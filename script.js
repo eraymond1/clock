@@ -16,6 +16,10 @@ var showCurrentTime = function()
         meridian = "PM";
     }
 
+    // if (hours > noon){
+    //     hours = hours - 12;
+    // }
+
     var clockTime = hours + ':' + minutes + ':' + seconds + ':' + meridian + '!';
 
     clock.innerText = clockTime;
