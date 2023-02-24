@@ -1,3 +1,11 @@
+html {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: beige;
+}
+
 .time {
     
     text-align: center;
@@ -13,7 +21,7 @@ h1 {
     height: 10vw;
     /*to make the height and width responsive*/
     width: 10vw;
-    background: url(https://media.geeksforgeeks.org/wp-content/uploads/20210302161254/imgonlinecomuaCompressToSizeOmNATjUMFKw-300x300.jpg) no-repeat;
+    background: url("./clockk.png") no-repeat;
     /*setting our background image*/
     background-size: 100%;
     }
@@ -50,3 +58,20 @@ h1 {
         left: 49.25%;
         opacity: 0.8;
         }
+
+        
+
+        #calcContainer, .calculator_keys {
+            display: block;
+            justify-content: right;
+            
+        }
+
+        .calculator_keys {
+            text-align: center;
+            width: 100px;
+            justify-content:right;
+
+        }
+
+       
