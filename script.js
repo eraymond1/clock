@@ -71,12 +71,10 @@ var buttonPressed = e => {
  } 
         function clearInput(){
                 var clr = document.getElementById("delete");
-                if(clr.value !="0"){
-                        clr.value = "0";
-                        display.value += "0";
-                        window.clearInput;
-                        
-                        }
+                console.log()
+                if(clr.value !=""){
+                        display.value = "";
+                }
         }
 
  for(let button of key){
