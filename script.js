@@ -56,6 +56,66 @@ setInterval(() => {
 
 }, 1000);
 
-   
 
+var display = document.getElementById("result");
+var calcKeys = document.querySelector(".calculator_keys");
+var one = document.getElementById("1");
+var key = document.getElementsByTagName("button")
+
+var buttonPressed = e => {
+        console.log(e.target.id);
+        if(e.target.id <= "9"){
+
+                display.value += e.target.id;
+        }
+ } 
+        function clearInput(){
+                var clr = document.getElementById("delete");
+                if(clr.value !="0"){
+                        clr.value = "0";
+                        display.value += "0";
+                        window.clearInput;
+                        
+                        }
+        }
+
+ for(let button of key){
+        button.addEventListener("click", buttonPressed);
+        
+ }
+
+// calcKeys.addEventListener("click", function(){
+//          //display.innerText = document.getElementById("#7");
+
+         
+//          var keys = document.querySelector("key-number");
+//          alert("Hello World!");
+
+//         if (keys = one.getElementsByID('1')){
+//                 display.innerHTML += "1";
+//         }
+        
+//                 //display = "1";
+        
+       
+    
+// });
+
+
+// function mySecondFunction() {
+
+    
+    
+//     // x.addEventListener("click", mySecondFunction);
+//     // display.addEventListener("click", mySecondFunction);
+
+    
+//     //     display.innerHTML = x.innerText;
+//     // console.log(x);
+
+    
+    
+// };
+
+//console.log(x);
 
