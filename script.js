@@ -61,17 +61,118 @@ var display = document.getElementById("result");
 var calcKeys = document.querySelector(".calculator_keys");
 var one = document.getElementById("1");
 var key = document.getElementsByTagName("button")
+var add = document.getElementById("addition");
+var equal = document.getElementById("equals");
 
 var buttonPressed = e => {
         console.log(e.target.id);
-        if(e.target.id <= "9"){
+        console.log(display.value);
+        console.log("Button Pressed is: " + buttonPressed.value);
+        
+        //a += e.target.id;
+        // var a = parseInt(document.getElementsByClassName("key-number").value);
+        //         var b = parseInt(document.getElementsByClassName("key-number").value);
+        const sum = [];
+        var results;
+        let n;
 
-                display.value += e.target.id;
+        if(e.target.id <= "9"){
+                display.value += parseInt(e.target.id);
+                sum.push(e.target.id);
+                for(let i = 0 ; i < sum.length; i++){
+                        
+                                sum[1] = i;
+                               //sum += sum[i];
+                               n += sum[i];
+
+                                console.log("Array Content: " + sum[i]);
+                                console.log(sum);
+                        
+                                 results += sum[i];
+
+                                console.log("Results: " + n);
+                
+                
+
+                // const clickedButton = [].concat(sum);
+                
+
+                // console.log(sum);
+                // console.log(clickedButton);
+                
+                }
+                        
+                        
+                
+                
+
         }
+        
+        
  } 
+
+//        var sum = e =>  {
+//                 //add.addEventListener("click", e);
+//                 // if(display.value != ""){
+//                 //         display.value == "";
+//                 // }
+
+                
+//                 var result;
+
+//                 var a = parseInt(document.getElementsByClassName("key-number").value);
+//                 var b = parseInt(document.getElementsByClassName("key-number").value);
+
+                
+//                 if(display.value != null){
+//                         //console.log("Display.value: " + display.value + "E.target.value is: " + e.target.value);
+//                         //console.log(display.value);
+//                         a = parseInt(display.value);
+
+                        
+//                         // if(sum[0] != display.value){
+//                         //         sum.push(b);
+//                         // }else {
+//                         //         console.log("Error: Numbers are not correct!")
+//                         // }
+
+                        
+//                         //console.log("array values: " + sum);
+//                         for (let i = 0; i < sum.length; i++){
+//                                 let sum = [];
+
+//                                 sum.push(a);
+                                
+//                                // console.log(sum[i]);
+//                                 //console.log("Array List: " + sum.lastIndexOf);
+
+//                                 if(sum[0] != a){
+//                                         sum.push(b);
+//                                 }else{
+//                                         break;
+//                                 }
+
+//                                 console.log(sum[0] + sum[1]);
+//                         }
+
+//                          var result = parseInt(sum[0]) + parseInt(sum[1]);
+
+//                          console.log("Results are: " + sum[0] + sum[1]);
+//                          console.log("Results are: " + result);
+
+                         
+
+
+//                 }
+                
+                
+
+//         }
+
+        
         function clearInput(){
                 var clr = document.getElementById("delete");
-                console.log()
+                //console.log(display.value);
                 if(clr.value !=""){
                         display.value = "";
                 }
@@ -81,6 +182,17 @@ var buttonPressed = e => {
         button.addEventListener("click", buttonPressed);
         
  }
+
+//  for(let button of key){
+        
+//         button.addEventListener("click", sum);
+//  }
+
+  
+
+ 
+      
+
 
 // calcKeys.addEventListener("click", function(){
 //          //display.innerText = document.getElementById("#7");
