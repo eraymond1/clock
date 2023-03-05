@@ -56,176 +56,119 @@ setInterval(() => {
 
 }, 1000);
 
+class Calculator {
+    constructor(previousOperandTextElement, currentOperandTextElement){
+        this.previousOperandTextElement = previousOperandTextElement;
+        this.currentOperandTextElement = currentOperandTextElement ;
+    }
 
-var display = document.getElementById("result");
-var calcKeys = document.querySelector(".calculator_keys");
-var one = document.getElementById("1");
-var key = document.getElementsByTagName("button")
-var add = document.getElementById("addition");
-var equal = document.getElementById("equals");
+    clear() {
+        this.currentOperand = '';
+        this.previousOperand = '';
+        this.operation = undefined;
+    }
 
-var buttonPressed = e => {
-        console.log(e.target.id);
-        console.log(display.value);
-        console.log("Button Pressed is: " + buttonPressed.value);
+    delete(){
+
+    }
+
+    appendNumber(number){
+        this.currentOperand = number;
+    }
+
+    chooseOperation(operation){
+
+    }
+
+    compute(){
+
+    }
+
+    updateDisplay(){
+        this.currentOperandTextElement.innerText = this.currentOperand;
+    }
+
+
+}
+
+const numberButton = document.querySelectorAll('[data-number]');
+const operationsButtons = document.querySelectorAll('[data-operation]');
+const equalsButton = document.querySelector('[data-equals]');
+const deleteButton = document.querySelector('[data-delete]');
+const allClearButton = document.querySelector('[data-all-clear]');
+const previousOperandTextElement = document.querySelector('[data-previous-operand]');
+const currentOperandTextElement = document.querySelector('[data-current-operand');
+
+const calculator = new Calculator(previousOperandTextElement, currentOperandTextElement)
+
+numberButton.forEach(button => {
+    button.addEventListener('click', () => {
+        calculator.appendNumber(button.innerText);
+        calculator.updateDisplay();
+    })
+})
+
+
+
+// var display = document.getElementById("result");
+// var calcKeys = document.querySelector(".calculator_keys");
+// var one = document.getElementById("1");
+// var key = document.getElementsByTagName("button")
+// var add = document.getElementById("addition");
+// var equal = document.getElementById("equals");
+
+// var buttonPressed = e => {
+//         console.log("Target id: " + e.target.id);
         
-        //a += e.target.id;
-        // var a = parseInt(document.getElementsByClassName("key-number").value);
-        //         var b = parseInt(document.getElementsByClassName("key-number").value);
-        const sum = [];
-        var results;
-        let n;
-
-        if(e.target.id <= "9"){
-                display.value += parseInt(e.target.id);
-                sum.push(e.target.id);
-                for(let i = 0 ; i < sum.length; i++){
-                        
-                                sum[1] = i;
-                               //sum += sum[i];
-                               n += sum[i];
-
-                                console.log("Array Content: " + sum[i]);
-                                console.log(sum);
-                        
-                                 results += sum[i];
-
-                                console.log("Results: " + n);
-                
-                
-
-                // const clickedButton = [].concat(sum);
-                
-
-                // console.log(sum);
-                // console.log(clickedButton);
-                
-                }
-                        
-                        
-                
-                
-
-        }
         
-        
- } 
 
-//        var sum = e =>  {
-//                 //add.addEventListener("click", e);
-//                 // if(display.value != ""){
-//                 //         display.value == "";
-//                 // }
+//         if(e.target.id <= "9"){
 
-                
-//                 var result;
-
-//                 var a = parseInt(document.getElementsByClassName("key-number").value);
-//                 var b = parseInt(document.getElementsByClassName("key-number").value);
-
-                
-//                 if(display.value != null){
-//                         //console.log("Display.value: " + display.value + "E.target.value is: " + e.target.value);
-//                         //console.log(display.value);
-//                         a = parseInt(display.value);
-
-                        
-//                         // if(sum[0] != display.value){
-//                         //         sum.push(b);
-//                         // }else {
-//                         //         console.log("Error: Numbers are not correct!")
-//                         // }
-
-                        
-//                         //console.log("array values: " + sum);
-//                         for (let i = 0; i < sum.length; i++){
-//                                 let sum = [];
-
-//                                 sum.push(a);
-                                
-//                                // console.log(sum[i]);
-//                                 //console.log("Array List: " + sum.lastIndexOf);
-
-//                                 if(sum[0] != a){
-//                                         sum.push(b);
-//                                 }else{
-//                                         break;
-//                                 }
-
-//                                 console.log(sum[0] + sum[1]);
-//                         }
-
-//                          var result = parseInt(sum[0]) + parseInt(sum[1]);
-
-//                          console.log("Results are: " + sum[0] + sum[1]);
-//                          console.log("Results are: " + result);
-
-                         
-
-
-//                 }
-                
+//                 display.value += parseInt(e.target.id);
                 
 
+            
 //         }
 
+//         // if(e.target.id === "equals") {
+//         //     var results = num1 + num2;
+//         //     console.log("resutls are: " + results);
+//         // }
         
-        function clearInput(){
-                var clr = document.getElementById("delete");
-                //console.log(display.value);
-                if(clr.value !=""){
-                        display.value = "";
-                }
-        }
-
- for(let button of key){
-        button.addEventListener("click", buttonPressed);
         
- }
-
-//  for(let button of key){
-        
-//         button.addEventListener("click", sum);
 //  }
 
-  
+//  var pressedButton = e => {
+//     var sum = [];
+//     var results;
+//     let n;
 
- 
-      
+//     const num1 = display.value;  
+//     console.log("num1 is: " + num1);             
+//             //     if(e.target.id <="9" && e.target.id != num1){
+//             //         const num2 = display.value
+//             //         console.log("Num1: " + num1);
+//             //     console.log("Num2: " + num2);
+                    
+//             // }
+//  }
 
 
-// calcKeys.addEventListener("click", function(){
-//          //display.innerText = document.getElementById("#7");
 
-         
-//          var keys = document.querySelector("key-number");
-//          alert("Hello World!");
 
-//         if (keys = one.getElementsByID('1')){
-//                 display.innerHTML += "1";
+        
+//         function clearInput(){
+//                 var clr = document.getElementById("delete");
+//                 //console.log(display.value);
+//                 if(clr.value !=""){
+//                         display.value = "";
+//                 }
 //         }
+
+//  for(let button of key){
+//         button.addEventListener("click", buttonPressed);
         
-//                 //display = "1";
-        
-       
-    
-// });
+//  }
 
 
-// function mySecondFunction() {
-
-    
-    
-//     // x.addEventListener("click", mySecondFunction);
-//     // display.addEventListener("click", mySecondFunction);
-
-    
-//     //     display.innerHTML = x.innerText;
-//     // console.log(x);
-
-    
-    
-// };
-
-//console.log(x);
 

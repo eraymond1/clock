@@ -1,9 +1,17 @@
-html {
+*, *::before, *::after {
     box-sizing: border-box;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: normal;
 }
 
+/* html {
+    box-sizing: border-box;
+} */
+
 body {
-    background-color: beige;
+    padding: 0;
+    margin: 0;
+    background: linear-gradient(to right, #00AAFF, #00FF6C);
 }
 
 .time {
@@ -19,11 +27,11 @@ h1 {
     position: relative;
     margin: auto;
     height: 10vw;
-    /*to make the height and width responsive*/
-    width: 10vw;
+    /*to make the height and width responsive */
+     width: 10vw;
     background: url("./clockk.png") no-repeat;
-    /*setting our background image*/
-    background-size: 100%;
+    /* setting our background image */
+     background-size: 100%;
     }
 
     #hour,
@@ -35,7 +43,7 @@ h1 {
     transform-origin: bottom;
     }
 
-    #hour {
+     #hour {
         width: 1.8%;
         height: 25%;
         top: 25%;
@@ -68,26 +76,61 @@ h1 {
             
         } */
 
-        .calculator_keys {
-            
-            position: relative;
-            text-align: center;
-            margin: auto;
-            justify-content: space-around;
-            width: 100px;
-            
-            
-            
+        .calculator_grid {
+            display: grid;
+            justify-content: center;
+            align-content: center;
+            min-height: 100vh;
+            grid-template-columns: repeat(4, 100px);
+            grid-template-rows: minmax(120px, auto) repeat(5, 100px);
+        }
+
+        .calculator_grid > button {
+            cursor: pointer;
+            font-size: 2rem;
+            border: 1px solid white;
+            outline: none;
+            background-color: rgba(255, 255, 255, .75);
 
         }
 
-        .calculator_display {
+        .calculator_grid > button:hover {
+            background-color: rgba(255, 255, 255, .9);
+        }
+
+        .span-two {
+            grid-column: span 2;
+        }
+
+        .output {
+            grid-column: 1 / -1;
+            background-color: rgba(0, 0, 0, .75);
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            flex-direction: column;
+            padding: 10px;
+            word-wrap: break-word;
+            word-break: break-all;
+        }
+
+        .output .previous-operand {
+            color: rgba(255, 255, 255, .75);
+            font-size: 1.5rem;
+        }
+
+        .output .current-operand {
+            color: white;
+            font-size: 2.5rem;
+        }
+
+        /* .calculator_display {
             padding-top: 20px;
             position: relative;
             text-align: center;
             margin: auto;            
             
             width: 100px;
-        }
+        } */
 
        
