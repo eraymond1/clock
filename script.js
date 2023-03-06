@@ -16,10 +16,6 @@ var showCurrentTime = function()
         meridian = "PM";
     }
 
-    // if (hours > noon){
-    //     hours = hours - 12;
-    // }
-
     var clockTime = hours + ':' + minutes + ':' + seconds + ':' + meridian + '!';
 
     clock.innerText = clockTime;
@@ -60,6 +56,8 @@ class Calculator {
     constructor(previousOperandTextElement, currentOperandTextElement){
         this.previousOperandTextElement = previousOperandTextElement;
         this.currentOperandTextElement = currentOperandTextElement ;
+        this.currentOperand = "";
+        this.clear();
     }
 
     clear() {
@@ -69,37 +67,104 @@ class Calculator {
     }
 
     delete(){
-
+        this.currentOperand = this.currentOperand.toString().slice(0, -1);
     }
 
     appendNumber(number){
-        this.currentOperand = number;
+      if(number === '.' && this.currentOperand.includes('.')) {
+        return;
+      }
+       this.currentOperand += number;
     }
 
     chooseOperation(operation){
+        if(this.currentOperand === ''){
+            return;
+        }
 
+        if(this.previousOperand !==  ''){
+            this.compute();
+        }
+        this.operation = operation;
+        this.previousOperand = this.currentOperand;
+        this.currentOperand = '';
     }
 
     compute(){
+        let computation;
+        const prev = parseFloat(this.previousOperand);
+        const current = parseFloat(this.currentOperand);
+        if(isNaN(prev) || isNaN(current)) {
+            return;
+        }
 
+        switch (this.operation){
+
+            case '+':
+                computation = prev + current
+                break
+            case '-':
+                    computation = prev - current
+                    break
+            case '*':
+                computation = prev * current
+                break
+            case '/':
+                computation = prev / current
+                break
+            default:
+                return  
+        }
+        this.currentOperand = computation;
+        this.operation = undefined;
+        this.previousOperand = '';
+    }
+
+    getDisplayNumber(number){
+        const stringNumber = number.toString();
+        const integerDigits = parseFloat(stringNumber.split('.')[0]);
+        const decimalDigits = stringNumber.split('.')[1];
+        let integerDisplay;
+        if(isNaN(integerDigits)){
+            integerDisplay = '';
+
+        }else{
+            integerDisplay = integerDigits.toLocaleString('en', {
+                maximumFractionDigits: 0
+            })
+        }
+        if(decimalDigits != null){
+            return `${integerDisplay}.${decimalDigits}`
+        }else{
+            return integerDisplay;
+        }
+        
     }
 
     updateDisplay(){
-        this.currentOperandTextElement.innerText = this.currentOperand;
+        
+        currentOperandTextElement.innerText = this.getDisplayNumber(this.currentOperand);
+        if(this.operation != null) {
+            this.previousOperandTextElement.innerText = 
+            `${this.getDisplayNumber(this.previousOperand)} ${this.operation}`
+        }else{
+            this.previousOperandTextElement.innerText = '';
+        }
+        
     }
 
 
 }
 
 const numberButton = document.querySelectorAll('[data-number]');
-const operationsButtons = document.querySelectorAll('[data-operation]');
+const operationButton = document.querySelectorAll('[data-operation]');
 const equalsButton = document.querySelector('[data-equals]');
 const deleteButton = document.querySelector('[data-delete]');
 const allClearButton = document.querySelector('[data-all-clear]');
 const previousOperandTextElement = document.querySelector('[data-previous-operand]');
 const currentOperandTextElement = document.querySelector('[data-current-operand');
 
-const calculator = new Calculator(previousOperandTextElement, currentOperandTextElement)
+const calculator = new Calculator(previousOperandTextElement, currentOperandTextElement);
 
 numberButton.forEach(button => {
     button.addEventListener('click', () => {
@@ -108,67 +173,24 @@ numberButton.forEach(button => {
     })
 })
 
+operationButton.forEach(button => {
+    button.addEventListener('click', () => {
+        calculator.chooseOperation(button.innerText);
+        calculator.updateDisplay();
+    })
+})
 
+equalsButton.addEventListener('click', button => {
+    calculator.compute();
+    calculator.updateDisplay();
+})
 
-// var display = document.getElementById("result");
-// var calcKeys = document.querySelector(".calculator_keys");
-// var one = document.getElementById("1");
-// var key = document.getElementsByTagName("button")
-// var add = document.getElementById("addition");
-// var equal = document.getElementById("equals");
+allClearButton.addEventListener('click', button => {
+    calculator.clear();
+    calculator.updateDisplay();
+})
 
-// var buttonPressed = e => {
-//         console.log("Target id: " + e.target.id);
-        
-        
-
-//         if(e.target.id <= "9"){
-
-//                 display.value += parseInt(e.target.id);
-                
-
-            
-//         }
-
-//         // if(e.target.id === "equals") {
-//         //     var results = num1 + num2;
-//         //     console.log("resutls are: " + results);
-//         // }
-        
-        
-//  }
-
-//  var pressedButton = e => {
-//     var sum = [];
-//     var results;
-//     let n;
-
-//     const num1 = display.value;  
-//     console.log("num1 is: " + num1);             
-//             //     if(e.target.id <="9" && e.target.id != num1){
-//             //         const num2 = display.value
-//             //         console.log("Num1: " + num1);
-//             //     console.log("Num2: " + num2);
-                    
-//             // }
-//  }
-
-
-
-
-        
-//         function clearInput(){
-//                 var clr = document.getElementById("delete");
-//                 //console.log(display.value);
-//                 if(clr.value !=""){
-//                         display.value = "";
-//                 }
-//         }
-
-//  for(let button of key){
-//         button.addEventListener("click", buttonPressed);
-        
-//  }
-
-
-
+deleteButton.addEventListener('click', button => {
+    calculator.delete();
+    calculator.updateDisplay();
+})
