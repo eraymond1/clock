@@ -4,6 +4,10 @@
     font-weight: normal;
 }
 
+html {
+    box-sizing: border-box;
+}
+
 body {
     padding: 0;
     margin: 0;
@@ -25,7 +29,7 @@ h1 {
     height: 10vw;
     /*to make the height and width responsive */
      width: 10vw;
-    background: url("./clockk.png") no-repeat;
+    background: url("./clock.png") no-repeat;
     /* setting our background image */
      background-size: 100%;
     }
