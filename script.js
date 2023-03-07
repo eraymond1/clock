@@ -16,6 +16,10 @@ var showCurrentTime = function()
         meridian = "PM";
     }
 
+    if (hours >= 13){
+        hours = hours - 12;
+    }
+
     var clockTime = hours + ':' + minutes + ':' + seconds + ':' + meridian + '!';
 
     clock.innerText = clockTime;
@@ -194,3 +198,25 @@ deleteButton.addEventListener('click', button => {
     calculator.delete();
     calculator.updateDisplay();
 })
+
+
+class ticTacToe {
+    constructor(oh, ex){
+        this.oh = oh;
+        this.ex = ex;
+    }
+
+    
+}
+
+const oh = document.querySelectorAll('[letter]');
+const ex = doucment.querySelectorAll('[letter]');
+
+oh.addEventListener('click', button => {
+
+})
+
+ex.addEventListener('click', button => {
+
+})
+
